@@ -7,6 +7,7 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { FiltrosComponent } from './filtros/filtros.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PaginationModule,
   ],
-  providers: [],
+  providers: [PaginationConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

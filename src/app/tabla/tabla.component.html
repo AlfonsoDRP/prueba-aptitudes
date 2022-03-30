@@ -15,8 +15,8 @@
       <tr
         *ngFor="
           let item of datos_clientes_tabla
-            | paginate: { itemsPerPage: 28, currentPage: page }
-        "
+            | paginate: { itemsPerPage: 29, currentPage: page }
+        " class="contenido-tabla"
       >
         <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
         <td class="referencia">{{ item.referencia }}</td>
@@ -40,7 +40,7 @@
   <div class="abajo">
     <p>Lineas: {{ datos_clientes_tabla.length }}</p>
     <div class="paginacion">
-      <pagination [boundaryLinks]="true" [totalItems]="100"></pagination>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
 </div>

@@ -18,14 +18,16 @@ table {
   border-collapse: collapse;
   align-items: center;
   border: 0;
+  .contenido-tabla{
+    &:hover{
+      background-color: rgb(252, 212, 138);
+    }
+  }
   tr{
     td{
       text-align: center;
     }
     text-align: center;
-    &:hover{
-      background-color: rgb(252, 212, 138);
-    }
     .imagen{
       width: 75px;
     }
