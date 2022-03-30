@@ -61,4 +61,12 @@ export class TablaComponent implements OnInit {
     fecha_extraida = fecha_extraida+" ´"+fecha.substring(2,4);
     return fecha_extraida;
   }
+  observaciones(item:any){
+    console.log(item);
+    if(item.observacion!=""){
+    alert(item.observacion);
+    }else{
+      alert("Sin observaciones")
+    }
+  }
 }

@@ -2,15 +2,15 @@
   <div class="tabla">
     <table class="tftable">
       <tr class="cabeza-tabla">
-        <th>img</th>
-        <th>producto</th>
-        <th>info</th>
+        <th></th>
+        <th class="referencia">PRODUCTO</th>
+        <th></th>
         <th>Q.</th>
-        <th>Estado</th>
-        <th>fecha</th>
-        <th>R/M</th>
-        <th>nº</th>
-        <th>Cliente</th>
+        <th>ESTADO</th>
+        <th>FECHA</th>
+        <th></th>
+        <th></th>
+        <th class="alias">CLIENTE</th>
       </tr>
       <tr
         *ngFor="
@@ -21,7 +21,7 @@
         <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
         <td class="referencia">{{ item.referencia }}</td>
         <td class="info">
-          <img src="../../assets/informacion.png" class="info" />
+          <img src="../../assets/informacion.png" class="info" (click)="observaciones(item)"/>
         </td>
         <td class="cantidad">x{{ item.cantidad }}</td>
         <td>
@@ -40,11 +40,7 @@
   <div class="abajo">
     <p>Lineas: {{ datos_clientes_tabla.length }}</p>
     <div class="paginacion">
-      <pagination-controls
-        (pageChange)="page = $event"
-        previousLabel="<<"
-        nextLabel=">>"
-      ></pagination-controls>
+      <pagination [boundaryLinks]="true" [totalItems]="100"></pagination>
     </div>
   </div>
 </div>
