@@ -1,1 +1,41 @@
-<p>tabla works!</p>
+<div class="tabla">
+  <div>
+    <table class="tftable" border="1">
+      <tr class="cabeza">
+        <th>img</th>
+        <th>producto</th>
+        <th>info</th>
+        <th>Q.</th>
+        <th>Estado</th>
+        <th>fecha</th>
+        <th>R/M</th>
+        <th>nº</th>
+        <th>Cliente</th>
+      </tr>
+      <tr
+        *ngFor="
+          let item of datos_clientes_tabla
+            | paginate: { itemsPerPage: 30, currentPage: page }
+        "
+      >
+        <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
+        <td class="referencia">{{ item.referencia }}</td>
+        <td class="info">Info</td>
+        <td class="cantidad">x{{ item.cantidad }}</td>
+        <td class="estado">{{ item.estado }}</td>
+        <td class="fecha">{{ item.fecha }}</td>
+        <td class="tipo">{{ item.tipo }}</td>
+        <td class="cod_cliente">{{ item.codigo_cliente }}</td>
+        <td class="alias">{{ item.alias_cliente }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="abajo">
+    <p>Lineas: {{datos_clientes_tabla.length}}</p>
+    <pagination-controls class="paginacion"
+      (pageChange)="page = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+    ></pagination-controls>
+  </div>
+</div>

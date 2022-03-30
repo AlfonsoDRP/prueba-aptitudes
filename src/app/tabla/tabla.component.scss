@@ -1,0 +1,37 @@
+.tabla{
+  background-color: rgb(255, 148, 148);
+  height: 100%;
+  width: 100%;
+}
+.cabeza{
+  border-bottom: 2px solid black;
+}
+.abajo{
+border-top: 1px solid black;
+width: 100%;
+gap: 0.5rem;
+display: flex;
+flex-direction: row;
+align-items:flex-end;
+justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+  tr{
+    &:hover{
+      background-color: rgb(252, 212, 138);
+    }
+    .img-logo {
+      width: 40px;
+      height: 20px;
+    }
+    .imagen {
+      border-left: 0;
+      border-bottom: 0;
+      border-right: 0;
+    }
+  }
+}
