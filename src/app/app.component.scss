@@ -7,10 +7,12 @@
 .contenedor-cabecera{
     background-color: aqua;
     width: 100%;
-    height: 50px;
+    height: 25px;
 }
 .contenedor-para-flex{
-    background-color: yellow;
+    background-image:url(../assets/montaña_fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
     padding: 0.5rem;
     gap: 0.5rem;
@@ -20,11 +22,13 @@
 .contenedor-filtros{
     background-color: green;
     height: 100%;
+    filter: opacity(90%);
     border-radius: 10px;
     width: 15%;
 }
 .contenedor-tabla{
     height: 100%;
+    filter: opacity(90%);
     background-color: white;
     width: 85%;
 }

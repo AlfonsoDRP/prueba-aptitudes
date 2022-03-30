@@ -1,7 +1,7 @@
-<div class="tabla">
-  <div>
-    <table class="tftable" border="1">
-      <tr class="cabeza">
+<div class="contenedor">
+  <div class="tabla">
+    <table class="tftable">
+      <tr class="cabeza-tabla">
         <th>img</th>
         <th>producto</th>
         <th>info</th>
@@ -15,27 +15,36 @@
       <tr
         *ngFor="
           let item of datos_clientes_tabla
-            | paginate: { itemsPerPage: 30, currentPage: page }
+            | paginate: { itemsPerPage: 28, currentPage: page }
         "
       >
         <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
         <td class="referencia">{{ item.referencia }}</td>
-        <td class="info">Info</td>
+        <td class="info">
+          <img src="../../assets/informacion.png" class="info" />
+        </td>
         <td class="cantidad">x{{ item.cantidad }}</td>
-        <td class="estado">{{ item.estado }}</td>
-        <td class="fecha">{{ item.fecha }}</td>
-        <td class="tipo">{{ item.tipo }}</td>
+        <td>
+          <label class="estado">{{ item.estado }}</label>
+        </td>
+        <td class="fecha"><strong>{{extraerhora(item.fecha)}}</strong> {{extraerfecha(item.fecha)}}</td>
+        <td class="tipo" *ngIf="item.tipo === 'Mesa'; else ruta">
+          <label for="" class="mesa">M</label>
+        </td>
+        <ng-template #ruta><label class="ruta">R</label></ng-template>
         <td class="cod_cliente">{{ item.codigo_cliente }}</td>
         <td class="alias">{{ item.alias_cliente }}</td>
       </tr>
     </table>
   </div>
   <div class="abajo">
-    <p>Lineas: {{datos_clientes_tabla.length}}</p>
-    <pagination-controls class="paginacion"
-      (pageChange)="page = $event"
-      previousLabel="Anterior"
-      nextLabel="Siguiente"
-    ></pagination-controls>
+    <p>Lineas: {{ datos_clientes_tabla.length }}</p>
+    <div class="paginacion">
+      <pagination-controls
+        (pageChange)="page = $event"
+        previousLabel="<<"
+        nextLabel=">>"
+      ></pagination-controls>
+    </div>
   </div>
 </div>
