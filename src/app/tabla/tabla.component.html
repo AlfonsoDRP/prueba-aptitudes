@@ -14,7 +14,7 @@
       </tr>
       <tr
         *ngFor="
-          let item of datos_clientes_tabla
+          let item of array_mostrado
             | paginate: { itemsPerPage: 29, currentPage: page }
         "
         class="contenido-tabla"
@@ -24,10 +24,15 @@
         <td class="info" *ngIf="item.observacion === ''; else contenido">
           <img src="../../assets/informacion.png" class="info" />
         </td>
-        <ng-template #contenido><td>
-          <img class="info" src="../../assets/informacion_amarillo.png" popover="{{item.observacion}}"
-          triggers="mouseenter:mouseleave">
-        </td></ng-template>
+        <ng-template #contenido
+          ><td>
+            <img
+              class="info"
+              src="../../assets/informacion_amarillo.png"
+              popover="{{ item.observacion }}"
+              triggers="mouseenter:mouseleave"
+            /></td
+        ></ng-template>
         <td class="cantidad">x{{ item.cantidad }}</td>
         <td *ngIf="item.estado === 'Pendiente'; else distinto">
           <label class="pendiente">{{ item.estado }}</label>
@@ -60,7 +65,11 @@
   <div class="abajo">
     <p>Lineas: {{ datos_clientes_tabla.length }}</p>
     <div class="paginacion">
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <pagination
+        [totalItems]="datos_clientes_tabla.length"
+        (pageChanged)="pageChanged($event)"
+        [itemsPerPage]="30"
+      ></pagination>
     </div>
   </div>
 </div>

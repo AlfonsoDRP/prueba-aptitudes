@@ -20,13 +20,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0.4rem;
-    .contenedor-para-grid-boton{
-        display: flex;
-        justify-content: flex-end;
-        .btn{
-            width: 50px;
-            height: 50px;
-        }
+    .contenedor-para-grid-boton {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 }

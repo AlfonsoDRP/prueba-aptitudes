@@ -8,19 +8,11 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 })
 export class TablaComponent implements OnInit {
   @Input() datos_clientes_tabla: any;
-  array_mostrado: string[] = [];
-  page: number = 0;
+  array_mostrado: any[] =[];
+  page: number = 1;
   constructor() {}
-  pageChanged(event: PageChangedEvent): void {
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
-    this.array_mostrado = this.datos_clientes_tabla.slice(startItem, endItem);
-  }
   ngOnInit(): void {
-    this.array_mostrado = this.datos_clientes_tabla.map((v: string, i: number) => {
-      return 'Line ' + (i + 1);
-    });
-    this.array_mostrado = this.datos_clientes_tabla.slice(0, 5);
+    this.array_mostrado = this.datos_clientes_tabla.slice(0, 30);
   }
   extraerhora(fecha: String) {
     let hora_extraida = fecha.substring(11, 16);
@@ -78,5 +70,10 @@ export class TablaComponent implements OnInit {
     } else {
       alert('Sin observaciones');
     }
+  }
+  pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.array_mostrado = this.datos_clientes_tabla.slice(startItem, endItem);
   }
 }
