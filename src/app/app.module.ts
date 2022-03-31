@@ -8,19 +8,26 @@ import { FiltrosComponent } from './filtros/filtros.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CabeceraComponent,
     FiltrosComponent,
-    TablaComponent
+    TablaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxPaginationModule,
     PaginationModule,
+    PopoverModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [PaginationConfig],
   bootstrap: [AppComponent]

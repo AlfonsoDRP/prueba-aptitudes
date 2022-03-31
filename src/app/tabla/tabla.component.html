@@ -16,18 +16,38 @@
         *ngFor="
           let item of datos_clientes_tabla
             | paginate: { itemsPerPage: 29, currentPage: page }
-        " class="contenido-tabla"
+        "
+        class="contenido-tabla"
       >
         <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
         <td class="referencia">{{ item.referencia }}</td>
-        <td class="info">
-          <img src="../../assets/informacion.png" class="info" (click)="observaciones(item)"/>
+        <td class="info" *ngIf="item.observacion === ''; else contenido">
+          <img src="../../assets/informacion.png" class="info" />
         </td>
+        <ng-template #contenido><td>
+          <img class="info" src="../../assets/informacion_amarillo.png" popover="{{item.observacion}}"
+          triggers="mouseenter:mouseleave">
+        </td></ng-template>
         <td class="cantidad">x{{ item.cantidad }}</td>
-        <td>
-          <label class="estado">{{ item.estado }}</label>
+        <td *ngIf="item.estado === 'Pendiente'; else distinto">
+          <label class="pendiente">{{ item.estado }}</label>
         </td>
-        <td class="fecha"><strong>{{extraerhora(item.fecha)}}</strong> {{extraerfecha(item.fecha)}}</td>
+        <ng-template #distinto
+          ><td>
+            <label
+              class="desconsolidada"
+              *ngIf="item.estado === 'Desconsolidada'; else entregada"
+              >{{ item.estado }}</label
+            >
+          </td></ng-template
+        >
+        <ng-template #entregada>
+          <label class="entregada">{{ item.estado }}</label>
+        </ng-template>
+        <td class="fecha">
+          <strong>{{ extraerhora(item.fecha) }}</strong>
+          {{ extraerfecha(item.fecha) }}
+        </td>
         <td class="tipo" *ngIf="item.tipo === 'Mesa'; else ruta">
           <label for="" class="mesa">M</label>
         </td>
