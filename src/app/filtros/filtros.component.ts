@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, } from '@angular/core';
 
 @Component({
   selector: 'app-filtros',
@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filtros.component.scss']
 })
 export class FiltrosComponent implements OnInit {
-
-  constructor() { }
-
+  @Input () datos_en_filtro :any;
+  cliente:String="";
+  usuario:String="";
+  referencia:String="";
+  fecha:Date = new Date();
+  tipos:String="";
+  constructor() {
+  }
   ngOnInit(): void {
   }
 

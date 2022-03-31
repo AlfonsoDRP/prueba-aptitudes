@@ -1,0 +1,32 @@
+.contenedor-inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+.label {
+  width: 100%;
+}
+
+.estados {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.estados-checks {
+  background-color: white;
+
+  .contenedor-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.4rem;
+    .contenedor-para-grid-boton{
+        display: flex;
+        justify-content: flex-end;
+        .btn{
+            width: 50px;
+            height: 50px;
+        }
+    }
+  }
+}

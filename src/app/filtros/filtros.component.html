@@ -1,3 +1,141 @@
-<div class="inputs">
-
+<div class="contenedor-inputs">
+  <div class="input-group filtro">
+    <label class="label">Cliente</label
+    ><input
+      [(ngModel)]="cliente"
+      type="text"
+      placeholder="Cliente"
+      class="form-control"
+      #name
+    />
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-danger" (click)="name.value=''">🗑</button>
+    </div>
+  </div>
+  <div class="input-group input">
+    <label class="label">Usuario</label
+    ><input
+      [(ngModel)]="usuario"
+      type="text"
+      placeholder="usuario"
+      class="form-control"
+    />
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-danger">🗑</button>
+    </div>
+  </div>
+  <div class="input-group input">
+    <label class="label">Referencia</label
+    ><input
+      [(ngModel)]="referencia"
+      type="text"
+      placeholder="referencia"
+      class="form-control"
+    />
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-danger">🗑</button>
+    </div>
+  </div>
+  <div class="input-group input">
+    <label class="label">Fecha</label
+    ><input
+      [(ngModel)]="fecha"
+      type="text"
+      placeholder="Daterangepicker"
+      class="form-control"
+      bsDaterangepicker
+      [bsConfig]="{ isAnimated: true }"
+      placement="right"
+    />
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-danger">🗑</button>
+    </div>
+  </div>
+  <div class="input-group input">
+    <label class="label">Tipos</label
+    ><input
+      [(ngModel)]="tipos"
+      type="text"
+      placeholder="tipos..."
+      class="form-control"
+    />
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-danger">🗑</button>
+    </div>
+  </div>
+  <label class="label">Estados</label>
+  <div class="estados-checks form-check">
+    <div class="contenedor-checks">
+      <div class="contenedor-para-grid-de-checks">
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Pendiente</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Recogiendo</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Recogida</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Desconsolidando</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Desconsolidada</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Entregada</label>
+        </div>
+        <div>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label for="">Incidencia</label>
+        </div>
+      </div>
+      <div class="contenedor-para-grid-boton">
+        <button type="button" class="btn btn-outline-danger boton-checks">
+          🗑
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

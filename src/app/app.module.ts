@@ -11,6 +11,7 @@ import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PopoverModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [PaginationConfig],
   bootstrap: [AppComponent]
