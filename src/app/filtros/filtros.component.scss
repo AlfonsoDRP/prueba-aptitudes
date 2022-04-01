@@ -1,5 +1,6 @@
 .contenedor-inputs {
   display: flex;
+  height: 100%;
   flex-direction: column;
   padding: 0.5rem;
   gap: 1rem;
@@ -15,15 +16,30 @@
 }
 .estados-checks {
   background-color: white;
-
+  border-radius: 8px;
+  height: 100%;
   .contenedor-checks {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0.4rem;
-    .contenedor-para-grid-boton {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    display: flex;
+    flex-direction: row;
+    .contenedor-para-grid-de-checks {
+      width: 50%;
+      padding: 0.3rem;
     }
+    .contenedor-para-grid-boton {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+}
+.contenedor-boton {
+  height: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  .btn-buscar {
+    width: 100%;
   }
 }

@@ -4,10 +4,10 @@
   </div>
   <div class="contenedor-para-flex">
     <div class="contenedor-filtros">
-      <app-filtros></app-filtros>
+      <app-filtros (emisor_filtro)="filtro" [datos_en_filtro]="datos_clientes"></app-filtros>
     </div>
     <div class="contenedor-tabla">
-      <app-tabla [datos_clientes_tabla]="datos_clientes"></app-tabla>
+      <app-tabla class="tabla" [datos_clientes_tabla]="datos_clientes" [filtro_tabla]="filtro"></app-tabla>
     </div>
   </div>
 </div>

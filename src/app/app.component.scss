@@ -1,11 +1,17 @@
 .contenedor{
     background-color: red;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    overflow-y: hidden;
+    grid-template-rows: 25px 1fr;
     height: 100vh;
 }
+.tabla{
+    overflow-y: hidden;
+    height: 100%;
+}
 .contenedor-cabecera{
-    background-color: aqua;
+    background-color: white;
+    text-align: center;
     width: 100%;
     height: 25px;
 }
@@ -13,23 +19,24 @@
     background-image:url(../assets/montaña_fondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-y: hidden;
     height: 100%;
     padding: 0.5rem;
     gap: 0.5rem;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns:300px 1fr ;
 }
 .contenedor-filtros{
-    background-color: green;
-    height: 100%;
-    filter: opacity(90%);
+    background-color: rgba(255, 255, 255, 0.8);
+    height:100%;
+    overflow-y: hidden;
     border-radius: 10px;
-    width: 15%;
+    width: 300px;
 }
 .contenedor-tabla{
-    height: 100%;
-    filter: opacity(90%);
+    height:100%;
+    width: 100%;
+    overflow-y: hidden;
     border-radius: 10px;
-    background-color: white;
-    width: 85%;
+    background-color: rgba(255, 255, 255, 0.8);
 }
