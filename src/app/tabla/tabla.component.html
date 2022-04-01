@@ -13,7 +13,7 @@
         <th class="alias">CLIENTE</th>
       </tr>
 
-      <tr *ngFor="let item of array_filtrado" class="contenido-tabla">
+      <tr *ngFor="let item of array_filtrado| slice:startItem:endItem" class="contenido-tabla">
         <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
 
         <td class="referencia">{{ item.referencia }}</td>

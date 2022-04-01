@@ -7,8 +7,8 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
   styleUrls: ['./tabla.component.scss'],
 })
 export class TablaComponent implements OnInit {
-  @Input () datos_clientes_tabla: any;
-  array_filtrado: any[] =[];
+  @Input() datos_clientes_tabla: any;
+  array_filtrado: any[] = [];
   page: number = 1;
   constructor() {}
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class TablaComponent implements OnInit {
     return hora_extraida;
   }
   extraerfecha(fecha: String) {
-    let fecha_extraida = fecha.substring(9, 10);
+    let fecha_extraida = fecha.substring(8, 10);
     let mes_numero = fecha.substring(5, 7);
     switch (mes_numero) {
       case '01':
@@ -69,9 +69,11 @@ export class TablaComponent implements OnInit {
       alert('Sin observaciones');
     }
   }
+  startItem:any;
+  endItem:any;
   pageChanged(event: PageChangedEvent): void {
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
-    this.array_filtrado = this.datos_clientes_tabla.slice(startItem, endItem);
+    this.startItem = (event.page - 1) * event.itemsPerPage;
+    this.endItem = event.page * event.itemsPerPage;
+    this.array_filtrado = this.datos_clientes_tabla.slice(this.startItem, this.endItem);
   }
 }
