@@ -2,7 +2,7 @@
   <div class="input-group filtro">
     <label class="label">Cliente</label
     ><input
-      [(ngModel)]="cliente"
+      [(ngModel)]="filtro.cliente"
       type="text"
       placeholder="Cliente"
       class="form-control"
@@ -21,7 +21,7 @@
   <div class="input-group input">
     <label class="label">Usuario</label
     ><input
-      [(ngModel)]="usuario"
+      [(ngModel)]="filtro.usuario"
       type="text"
       placeholder="usuario"
       class="form-control"
@@ -33,7 +33,7 @@
   <div class="input-group input">
     <label class="label">Referencia</label
     ><input
-      [(ngModel)]="referencia"
+      [(ngModel)]="filtro.referencia"
       type="text"
       placeholder="referencia"
       class="form-control"
@@ -45,7 +45,7 @@
   <div class="input-group input">
     <label class="label">Fecha</label
     ><input
-      [(ngModel)]="fecha"
+      [(ngModel)]="filtro.fecha"
       type="text"
       placeholder="Daterangepicker"
       class="form-control"
@@ -60,7 +60,7 @@
   <div class="input-group input">
     <label class="label">Tipos</label
     ><input
-      [(ngModel)]="tipos"
+      [(ngModel)]="filtro.tipos"
       type="text"
       placeholder="tipos..."
       class="form-control"
@@ -145,7 +145,7 @@
     </div>
   </div>
   <div class="contenedor-boton">
-    <button class="btn-buscar btn btn-primary" (click)="asigna_filtro()">🔍Buscar</button>
+    <button class="btn-buscar btn btn-primary" (click)="buscar()">🔍Buscar</button>
   </div>
 </div>
 

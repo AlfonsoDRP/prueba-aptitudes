@@ -8,12 +8,11 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 })
 export class TablaComponent implements OnInit {
   @Input () datos_clientes_tabla: any;
-  @Input () filtro_tabla: any;
-  array_mostrado: any[] =[];
+  array_filtrado: any[] =[];
   page: number = 1;
   constructor() {}
   ngOnInit(): void {
-    this.array_mostrado = this.datos_clientes_tabla.slice(0, 28);
+    this.array_filtrado = this.datos_clientes_tabla.slice(0, 28);
   }
   extraerhora(fecha: String) {
     let hora_extraida = fecha.substring(11, 16);
@@ -73,9 +72,6 @@ export class TablaComponent implements OnInit {
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.array_mostrado = this.datos_clientes_tabla.slice(startItem, endItem);
-  }
-  filtracion(event:any){
-
+    this.array_filtrado = this.datos_clientes_tabla.slice(startItem, endItem);
   }
 }
