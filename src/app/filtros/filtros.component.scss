@@ -1,7 +1,7 @@
 .contenedor-inputs {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  height: 100%;
   padding: 0.5rem;
   gap: 1rem;
 }
@@ -9,27 +9,26 @@
   width: 100%;
 }
 
-.estados {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+
 .estados-checks {
+  margin: 0;
   background-color: white;
   border-radius: 8px;
   height: 100%;
   .contenedor-checks {
-    display: flex;
-    flex-direction: row;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     .contenedor-para-grid-de-checks {
+      height: 100%;
       width: 50%;
       padding: 0.3rem;
     }
     .contenedor-para-grid-boton {
-      width: 50%;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-direction: row-reverse;
+      height: 100%;
+      align-items: flex-start;
     }
   }
 }

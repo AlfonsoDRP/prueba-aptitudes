@@ -11,13 +11,22 @@ export class FiltrosComponent implements OnInit {
   filtro_datos: any;
   filtro: any = {
     'cliente': '',
-    'usuario': '',
-    'referencia': '',
-    'tipos': '',
+      'usuario': '',
+      'referencia': '',
+      'tipo': '',
+      'fecha': [],
+      'estado':{
+        'pendiente:boolean':false,
+        'recogiendo:boolean':false,
+        'recogida:boolean':false,
+        'desconsolidando:boolean':false,
+        'desconsolidada:boolean':false,
+        'entregada:boolean':false,
+        'incidencia:boolean':false
+      }
   };
   constructor() {}
   ngOnInit(): void {}
-  asigna_filtro() {}
   buscar() {
     console.log(this.filtro.cliente);
     this.filtro_datos = [];
@@ -29,6 +38,15 @@ export class FiltrosComponent implements OnInit {
       'referencia': '',
       'tipo': '',
       'fecha': '',
+      'estado':{
+        'pendiente':false,
+        'recogiendo':false,
+        'recogida':false,
+        'desconsolidando':false,
+        'desconsolidada':false,
+        'entregada':false,
+        'incidencia':false,
+      }
     };
   }
 }

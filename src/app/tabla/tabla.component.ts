@@ -10,9 +10,10 @@ export class TablaComponent implements OnInit {
   @Input() datos_clientes_tabla: any;
   array_filtrado: any[] = [];
   page: number = 1;
+  startItem:any;
+  endItem:any;
   constructor() {}
   ngOnInit(): void {
-    this.array_filtrado = this.datos_clientes_tabla.slice(0, 28);
   }
   extraerhora(fecha: String) {
     let hora_extraida = fecha.substring(11, 16);
@@ -44,36 +45,54 @@ export class TablaComponent implements OnInit {
         fecha_extraida = fecha_extraida + ' julio';
         break;
       case '08':
-        fecha_extraida = fecha_extraida + ' sept';
+        fecha_extraida = fecha_extraida + ' ago';
         break;
       case '09':
-        fecha_extraida = fecha_extraida + ' oct';
+        fecha_extraida = fecha_extraida + ' sept';
         break;
       case '10':
-        fecha_extraida = fecha_extraida + ' nov';
+        fecha_extraida = fecha_extraida + ' oct';
         break;
       case '11':
-        fecha_extraida = fecha_extraida + ' dic';
+        fecha_extraida = fecha_extraida + ' nov';
         break;
       case '12':
-        fecha_extraida = fecha_extraida + ' enero';
+        fecha_extraida = fecha_extraida + ' dic';
         break;
     }
     fecha_extraida = fecha_extraida + ' ´' + fecha.substring(2, 4);
     return fecha_extraida;
   }
-  observaciones(item: any) {
-    if (item.observacion != '') {
-      alert(item.observacion);
-    } else {
-      alert('Sin observaciones');
-    }
+  getlogo(item:any){
+    return item.logo;
   }
-  startItem:any;
-  endItem:any;
+  getreferencia(item:any){
+    return item.referencia;
+  }
+  getinfo(item:any){
+    return item.observacion;
+  }
+  getcantidad(item:any){
+    return item.cantidad;
+  }
+  getestado(item:any){
+    return item.estado;
+  }
+  getfecha(item:any){
+    return item.fecha;
+  }
+  gettipo(item:any){
+    return item.tipo;
+  }
+  getcod_cliente(item:any){
+    return item.codigo_cliente;
+  }
+  getalias(item:any){
+    return item.alias_cliente;
+  }
   pageChanged(event: PageChangedEvent): void {
     this.startItem = (event.page - 1) * event.itemsPerPage;
     this.endItem = event.page * event.itemsPerPage;
-    this.array_filtrado = this.datos_clientes_tabla.slice(this.startItem, this.endItem);
+    this.array_filtrado=this.datos_clientes_tabla.slice(this.startItem, this.endItem);
   }
 }

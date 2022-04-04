@@ -1,13 +1,13 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'prueba-aptitudes';
-  filtro:any;
+  filtro: any;
   datos_clientes = [
     {
       id: '1',
@@ -1310,33 +1310,120 @@ export class AppComponent implements OnInit{
       alias_cliente: 'SURTRES (SEVILLA)',
     },
   ];
-  array_filtrado:any;
+  array_filtrado: any;
 
   ngOnInit(): void {
+    this.datos_clientes.sort(function (fecha1, fecha2) {
+      if (fecha1.fecha > fecha2.fecha) {
+        return 1;
+      } else if (fecha1.fecha < fecha2.fecha) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
     this.array_filtrado = this.datos_clientes;
+    console.log(this.array_filtrado);
+  }
+  compararFechas() {
+    for (let i = 0; i < this.datos_clientes.length; i++) {
+      if (this.filtro[0] <= this.datos_clientes[i].fecha && this.datos_clientes[i].fecha <= this.filtro[1]) {
+        return true;
+
+      }else{
+        return true;
+      }
+    }
   }
   buscarFiltroMaestro(buscarFiltro: any) {
-    this.filtro = Object.assign({}, buscarFiltro);
+    this.filtro = Object.assign([], buscarFiltro);
     console.log(this.filtro);
     this.cargarDatos();
     console.log(this.array_filtrado);
-
+  }
+  comprobarestado(item: String) {
+    if (this.filtro.estado.pendiente) {
+      if (item.toLowerCase() == 'pendiente') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.recogiendo) {
+      if (item.toLowerCase() == 'recogiendo') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.recogida) {
+      if (item.toLowerCase() == 'recogida') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.desconsolidando) {
+      if (item.toLowerCase() == 'desconsolidando') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.desconsolidada) {
+      if (item.toLowerCase() == 'desconsolidada') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.entregada) {
+      if (item.toLowerCase() == 'entregada') {
+        return true;
+      }
+    }
+    if (this.filtro.estado.incidencia) {
+      if (item.toLowerCase() == 'incidencia') {
+        return true;
+      }
+    }
+    if (
+      this.filtro.estado.pendiente == false &&
+      this.filtro.estado.recogiendo == false &&
+      this.filtro.estado.recogida == false &&
+      this.filtro.estado.desconsolidando == false &&
+      this.filtro.estado.desconsolidada == false &&
+      this.filtro.estado.entregada == false &&
+      this.filtro.estado.incidencia == false
+    ) {
+      return true;
+    }
+    return false;
   }
 
   cargarDatos() {
     this.array_filtrado = [];
-    console.log('antes del for')
-    for (let i = 0; i <= this.datos_clientes.length; i++) {
-      console.log(this.datos_clientes[i].alias_cliente)
-      if (this.datos_clientes[i].alias_cliente.toLowerCase().indexOf(this.filtro.cliente.toLowerCase()) >= 0) {
-        if (this.datos_clientes[i].usuario.toLowerCase().indexOf(this.filtro.usuario.toLowerCase()) >= 0) {
-          if (this.datos_clientes[i].referencia.toLowerCase().indexOf(this.filtro.referencia.toLowerCase()) >= 0) {
-            
-            console.log('primer if');
-            this.array_filtrado.push(this.datos_clientes[i])
+    console.log('antes del for');
+    for (let i = 0; i < this.datos_clientes.length; i++) {
+      console.log(this.datos_clientes[i].alias_cliente);
+
+      if (
+        this.datos_clientes[i].alias_cliente
+          .toLowerCase()
+          .indexOf(this.filtro.cliente.toLowerCase()) >= 0
+      ) {
+        if (
+          this.datos_clientes[i].usuario
+            .toLowerCase()
+            .indexOf(this.filtro.usuario.toLowerCase()) >= 0
+        ) {
+          if (
+            this.datos_clientes[i].referencia
+              .toLowerCase()
+              .indexOf(this.filtro.referencia.toLowerCase()) >= 0
+          ) {
+            if (
+              this.datos_clientes[i].tipo
+                .toLowerCase()
+                .indexOf(this.filtro.tipo.toLowerCase()) >= 0
+            ) {
+              if (this.comprobarestado(this.datos_clientes[i].estado)) {
+                this.array_filtrado.push(this.datos_clientes[i]);
+              }
+            }
           }
         }
-      } 
+      }
     }
   }
 }

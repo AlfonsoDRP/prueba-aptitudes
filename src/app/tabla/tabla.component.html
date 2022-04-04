@@ -13,12 +13,12 @@
         <th class="alias">CLIENTE</th>
       </tr>
 
-      <tr *ngFor="let item of array_filtrado| slice:startItem:endItem" class="contenido-tabla">
-        <td class="imagen"><img src="{{ item.logo }}" class="img-logo" /></td>
+      <tr *ngFor="let item of datos_clientes_tabla | slice: startItem:endItem " class="contenido-tabla">
+        <td class="imagen"><img src="{{ getlogo(item) }}" class="img-logo" /></td>
 
-        <td class="referencia">{{ item.referencia }}</td>
+        <td class="referencia">{{ getreferencia(item) }}</td>
 
-        <td class="info" *ngIf="item.observacion === ''; else contenido">
+        <td class="info" *ngIf="getinfo(item) === ''; else contenido">
           <img src="../../assets/informacion.png" class="info" />
         </td>
 
@@ -27,45 +27,45 @@
             <img
               class="info"
               src="../../assets/informacion_amarillo.png"
-              popover="{{ item.observacion }}"
+              popover="{{ getinfo(item) }}"
               triggers="mouseenter:mouseleave"
             /></td
         ></ng-template>
 
-        <td class="cantidad">x{{ item.cantidad }}</td>
+        <td class="cantidad">x{{ getcantidad(item) }}</td>
 
-        <td *ngIf="item.estado === 'Pendiente'; else distinto">
-          <label class="pendiente">{{ item.estado }}</label>
+        <td *ngIf="getestado(item) === 'Pendiente'; else distinto">
+          <label class="pendiente">{{ getestado(item) }}</label>
         </td>
 
         <ng-template #distinto
           ><td>
             <label
               class="desconsolidada"
-              *ngIf="item.estado === 'Desconsolidada'; else entregada"
-              >{{ item.estado }}</label
+              *ngIf="getestado(item) === 'Desconsolidada'; else entregada"
+              >{{ getestado(item) }}</label
             >
           </td></ng-template
         >
 
         <ng-template #entregada>
-          <label class="entregada">{{ item.estado }}</label>
+          <label class="entregada">{{ getestado(item) }}</label>
         </ng-template>
 
         <td class="fecha">
-          <strong>{{ extraerhora(item.fecha) }}</strong>
-          {{ extraerfecha(item.fecha) }}
+          <strong>{{ extraerhora(getfecha(item)) }}</strong>
+          {{ extraerfecha(getfecha(item)) }}
         </td>
 
-        <td class="tipo" *ngIf="item.tipo === 'Mesa'; else ruta">
+        <td class="tipo" *ngIf="gettipo(item) === 'Mesa'; else ruta">
           <label for="" class="mesa">M</label>
         </td>
 
         <ng-template #ruta><label class="ruta">R</label></ng-template>
 
-        <td class="cod_cliente">{{ item.codigo_cliente }}</td>
+        <td class="cod_cliente">{{ getcod_cliente(item) }}</td>
 
-        <td class="alias">{{ item.alias_cliente }}</td>
+        <td class="alias">{{ getalias(item) }}</td>
       </tr>
     </table>
   </div>
