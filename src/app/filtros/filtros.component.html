@@ -25,9 +25,10 @@
       type="text"
       placeholder="usuario"
       class="form-control"
+      #usu
     />
     <div class="input-group-append">
-      <button type="button" class="btn btn-outline-danger" >🗑</button>
+      <button type="button" class="btn btn-outline-danger" (click)="usu.value=''" >🗑</button>
     </div>
   </div>
   <div class="input-group input">
@@ -37,9 +38,10 @@
       type="text"
       placeholder="referencia"
       class="form-control"
+      #refe
     />
     <div class="input-group-append">
-      <button type="button" class="btn btn-outline-danger">🗑</button>
+      <button type="button" class="btn btn-outline-danger" (click)="refe.value=''">🗑</button>
     </div>
   </div>
   <div class="input-group input">
@@ -52,9 +54,10 @@
       bsDaterangepicker
       [bsConfig]="{ isAnimated: true }"
       placement="right"
+      #fecha
     />
     <div class="input-group-append">
-      <button type="button" class="btn btn-outline-danger">🗑</button>
+      <button type="button" class="btn btn-outline-danger" (click)="fecha.value=''">🗑</button>
     </div>
   </div>
   <div class="input-group input">
@@ -64,9 +67,10 @@
       type="text"
       placeholder="tipos..."
       class="form-control"
+      #tipos
     />
     <div class="input-group-append">
-      <button type="button" class="btn btn-outline-danger">🗑</button>
+      <button type="button" class="btn btn-outline-danger" (click)="tipos.value=''">🗑</button>
     </div>
   </div>
   <div>
@@ -81,6 +85,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Pendiente</label>
         </div>
@@ -91,6 +96,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Recogiendo</label>
         </div>
@@ -101,6 +107,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Recogida</label>
         </div>
@@ -111,6 +118,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Desconsolidando</label>
         </div>
@@ -121,6 +129,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Desconsolidada</label>
         </div>
@@ -131,6 +140,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Entregada</label>
         </div>
@@ -141,6 +151,7 @@
             type="checkbox"
             name="flexRadioDefault"
             id="flexRadioDefault1"
+            #estado
           />
           <label for="">Incidencia</label>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tarea } from './models/tarea/tarea.model';
 
 @Component({
   selector: 'app-root',
@@ -1310,10 +1311,16 @@ export class AppComponent implements OnInit {
       alias_cliente: 'SURTRES (SEVILLA)',
     },
   ];
-  array_filtrado: any;
+  tareas: Tarea[] = [];
+  array_filtrado: Tarea[] = [];
 
   ngOnInit(): void {
-    this.datos_clientes.sort(function (fecha1, fecha2) {
+    this.datos_clientes.forEach((s) => {
+      this.tareas.push(new Tarea(s));
+    });
+
+    console.log(this.tareas);
+    this.tareas.sort(function (fecha1, fecha2) {
       if (fecha1.fecha > fecha2.fecha) {
         return 1;
       } else if (fecha1.fecha < fecha2.fecha) {
@@ -1322,25 +1329,27 @@ export class AppComponent implements OnInit {
         return 0;
       }
     });
-    this.array_filtrado = this.datos_clientes;
+
+    this.array_filtrado = this.tareas;
     console.log(this.array_filtrado);
   }
-  compararFechas() {
-    for (let i = 0; i < this.datos_clientes.length; i++) {
-      if (this.filtro[0] <= this.datos_clientes[i].fecha && this.datos_clientes[i].fecha <= this.filtro[1]) {
-        return true;
 
-      }else{
-        return true;
-      }
+  compararFechas(index: number) {
+    if (
+      this.filtro[0] <= this.tareas[index].fecha &&
+      this.tareas[index].fecha <= this.filtro[1]
+    ) {
+      return true;
+    } else {
+      return false;
     }
+  
   }
   buscarFiltroMaestro(buscarFiltro: any) {
     this.filtro = Object.assign([], buscarFiltro);
-    console.log(this.filtro);
     this.cargarDatos();
-    console.log(this.array_filtrado);
   }
+
   comprobarestado(item: String) {
     if (this.filtro.estado.pendiente) {
       if (item.toLowerCase() == 'pendiente') {
@@ -1393,32 +1402,29 @@ export class AppComponent implements OnInit {
 
   cargarDatos() {
     this.array_filtrado = [];
-    console.log('antes del for');
-    for (let i = 0; i < this.datos_clientes.length; i++) {
-      console.log(this.datos_clientes[i].alias_cliente);
-
+    for (let i = 0; i < this.tareas.length; i++) {
       if (
-        this.datos_clientes[i].alias_cliente
+        this.tareas[i].alias_cliente
           .toLowerCase()
           .indexOf(this.filtro.cliente.toLowerCase()) >= 0
       ) {
         if (
-          this.datos_clientes[i].usuario
+          this.tareas[i].usuario
             .toLowerCase()
             .indexOf(this.filtro.usuario.toLowerCase()) >= 0
         ) {
           if (
-            this.datos_clientes[i].referencia
+            this.tareas[i].referencia
               .toLowerCase()
               .indexOf(this.filtro.referencia.toLowerCase()) >= 0
           ) {
             if (
-              this.datos_clientes[i].tipo
+              this.tareas[i].tipo
                 .toLowerCase()
-                .indexOf(this.filtro.tipo.toLowerCase()) >= 0
+                .indexOf(this.filtro.tipos.toLowerCase()) >= 0
             ) {
-              if (this.comprobarestado(this.datos_clientes[i].estado)) {
-                this.array_filtrado.push(this.datos_clientes[i]);
+              if (this.comprobarestado(this.tareas[i].estado)) {
+                this.array_filtrado.push(this.tareas[i]);
               }
             }
           }
@@ -1426,4 +1432,5 @@ export class AppComponent implements OnInit {
       }
     }
   }
+  
 }

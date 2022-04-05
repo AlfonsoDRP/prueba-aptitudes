@@ -13,12 +13,12 @@
         <th class="alias">CLIENTE</th>
       </tr>
 
-      <tr *ngFor="let item of datos_clientes_tabla | slice: startItem:endItem " class="contenido-tabla">
-        <td class="imagen"><img src="{{ getlogo(item) }}" class="img-logo" /></td>
+      <tr *ngFor="let item of datos_clientes_tabla | slice: startItem:endItem" class="contenido-tabla">
+        <td class="imagen"><img src="{{ item.get_logo()}}" class="img-logo" /></td>
 
-        <td class="referencia">{{ getreferencia(item) }}</td>
+        <td class="referencia">{{ item.get_referencia() }}</td>
 
-        <td class="info" *ngIf="getinfo(item) === ''; else contenido">
+        <td class="info" *ngIf="item.get_observacion() === ''; else contenido">
           <img src="../../assets/informacion.png" class="info" />
         </td>
 
@@ -27,45 +27,46 @@
             <img
               class="info"
               src="../../assets/informacion_amarillo.png"
-              popover="{{ getinfo(item) }}"
+              popover="{{ item.get_observacion() }}"
               triggers="mouseenter:mouseleave"
+              placement="left"
             /></td
         ></ng-template>
 
-        <td class="cantidad">x{{ getcantidad(item) }}</td>
+        <td class="cantidad">x{{ item.get_cantidad() }}</td>
 
-        <td *ngIf="getestado(item) === 'Pendiente'; else distinto">
-          <label class="pendiente">{{ getestado(item) }}</label>
+        <td *ngIf="item.get_estado() === 'Pendiente'; else distinto">
+          <label class="pendiente">{{ item.get_estado() }}</label>
         </td>
 
         <ng-template #distinto
           ><td>
             <label
               class="desconsolidada"
-              *ngIf="getestado(item) === 'Desconsolidada'; else entregada"
-              >{{ getestado(item) }}</label
+              *ngIf="item.get_estado() === 'Desconsolidada'; else entregada"
+              >{{ item.get_estado() }}</label
             >
           </td></ng-template
         >
 
         <ng-template #entregada>
-          <label class="entregada">{{ getestado(item) }}</label>
+          <label class="entregada">{{ item.get_estado() }}</label>
         </ng-template>
 
         <td class="fecha">
-          <strong>{{ extraerhora(getfecha(item)) }}</strong>
-          {{ extraerfecha(getfecha(item)) }}
+          <strong>{{ extraerhora(item.get_fecha()) }}</strong>
+          {{ item.extraerfecha() }}
         </td>
 
-        <td class="tipo" *ngIf="gettipo(item) === 'Mesa'; else ruta">
+        <td class="tipo" *ngIf="item.get_tipo() === 'Mesa'; else ruta">
           <label for="" class="mesa">M</label>
         </td>
 
         <ng-template #ruta><label class="ruta">R</label></ng-template>
 
-        <td class="cod_cliente">{{ getcod_cliente(item) }}</td>
+        <td class="cod_cliente">{{ item.get_cod_cliente() }}</td>
 
-        <td class="alias">{{ getalias(item) }}</td>
+        <td class="alias">{{ item.get_alias_cliente() }}</td>
       </tr>
     </table>
   </div>
@@ -77,7 +78,6 @@
       (pageChanged)="pageChanged($event)"
       [itemsPerPage]="28"
       [boundaryLinks]="true"
-      [totalItems]="100"
       previousText="&lsaquo;"
       nextText="&rsaquo;"
       firstText="&laquo;"
