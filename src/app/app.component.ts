@@ -1318,8 +1318,6 @@ export class AppComponent implements OnInit {
     this.datos_clientes.forEach((s) => {
       this.tareas.push(new Tarea(s));
     });
-
-    console.log(this.tareas);
     this.tareas.sort(function (fecha1, fecha2) {
       if (fecha1.fecha > fecha2.fecha) {
         return 1;
@@ -1331,21 +1329,24 @@ export class AppComponent implements OnInit {
     });
 
     this.array_filtrado = this.tareas;
-    console.log(this.array_filtrado);
   }
 
-  compararFechas(index: number) {
-    if (
-      this.filtro[0] <= this.tareas[index].fecha &&
-      this.tareas[index].fecha <= this.filtro[1]
-    ) {
-      return true;
+  compararFechas(index: number): void {
+    if (this.filtro.fecha.length > 0) {
+      if (
+        this.filtro[0].toString() <= this.tareas[index].fecha.toString() &&
+        this.tareas[index].fecha.toString() <= this.filtro[1].toString()
+      ) {
+        console.log('he filtrado la fecha');
+      } else {
+        console.log('no he filtrado');
+      }
     } else {
-      return false;
+      console.log('chupamela');
     }
-  
   }
   buscarFiltroMaestro(buscarFiltro: any) {
+    console.log(this.compararFechas(23));
     this.filtro = Object.assign([], buscarFiltro);
     this.cargarDatos();
   }
@@ -1432,5 +1433,4 @@ export class AppComponent implements OnInit {
       }
     }
   }
-  
 }
