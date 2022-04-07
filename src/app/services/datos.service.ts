@@ -1,7 +1,8 @@
+
 import { Tarea } from "../models/tarea/tarea.model";
 
 export class datosService{
-
+  
     public datos_clientes:Tarea[]= [
         {
           id: '1',
@@ -1305,8 +1306,21 @@ export class datosService{
           alias_cliente: 'SURTRES (SEVILLA)',
         },
     ].map((t) => new Tarea(t));
-    public datos_muestra:Tarea[]=this.datos_clientes;
 
+    public datos_muestra:Tarea[]=this.datos_clientes.sort(function(fecha1,fecha2){
+      return fecha1.fecha>fecha2.fecha ? 1 : -1;
+    });
+
+    filtrofecha(fecha: string[],item:any){
+      const startDate = new Date(fecha[0]);
+      const endDate = new Date(fecha[1]);
+      const fechaItem = new Date(item.fecha);
+      if (startDate <= fechaItem && fechaItem <= endDate){
+        return true;
+      }else{
+        return false;
+      }
+    }
 
     cargarDatos(filtro:any) {
       console.log("estoy en cargar datos")
@@ -1334,7 +1348,11 @@ export class datosService{
                   .indexOf(filtro.tipos.toLowerCase()) >= 0
               ) {
                 if (this.comprobarestado(this.datos_clientes[i].estado,filtro)) {
-                  this.datos_muestra.push(this.datos_clientes[i]);
+                   
+                  if(this.filtrofecha(filtro.fecha,this.datos_clientes[i])){
+                    this.datos_muestra.push(this.datos_clientes[i])
+                    
+                  }
                   
                 }
   
@@ -1345,6 +1363,7 @@ export class datosService{
       }
       console.log(this.datos_muestra);
     }
+
     comprobarestado(item: String,filtro:any) {
       if (filtro.estado.pendiente) {
         if (item.toLowerCase() == 'pendiente') {

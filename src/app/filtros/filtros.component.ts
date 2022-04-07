@@ -28,7 +28,7 @@ export class FiltrosComponent implements OnInit {
   ngOnInit(): void {}
   buscar() {
     console.log('Emito que quiero filtrar');
-    this.datosSrv.cargarDatos(this.filtro)
+    this.datosSrv.cargarDatos(this.filtro);
     this.filtro={
       cliente: '',
       usuario: '',
