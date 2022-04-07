@@ -152,7 +152,7 @@ export class datosService{
           referencia: 'AR7352',
           logo: 'https://logistics.beateam.es/azurglobal/storage/352/QUICK-STEER.png',
           usuario: 'Christian',
-          observacion: 'JOSE ANTONIO-  PIDE ALEJ',
+          observacion: 'JOSE ANTONIO-  PidE ALEJ',
           cantidad: '2',
           estado: 'Pendiente',
           fecha: '2021-09-28 15:29:56',
@@ -1305,24 +1305,94 @@ export class datosService{
           alias_cliente: 'SURTRES (SEVILLA)',
         },
     ].map((t) => new Tarea(t));
-    public filtro = {
-        cliente: '',
-        usuario: '',
-        referencia: '',
-        tipos: '',
-        fecha: [],
-        estado: {
-          'pendiente': false,
-          'recogiendo': false,
-          'recogida': false,
-          'desconsolidando': false,
-          'desconsolidada': false,
-          'entregada': false,
-          'incidencia': false,
+    public datos_muestra:Tarea[]=this.datos_clientes;
+
+
+    cargarDatos(filtro:any) {
+      console.log("estoy en cargar datos")
+      console.log(filtro);
+      this.datos_muestra = [];
+      for (let i = 0; i < this.datos_clientes.length; i++) {
+        if (
+          this.datos_clientes[i].alias_cliente
+            .toLowerCase()
+            .indexOf(filtro.cliente.toLowerCase()) >= 0
+        ) {
+          if (
+            this.datos_clientes[i].usuario
+              .toLowerCase()
+              .indexOf(filtro.usuario.toLowerCase()) >= 0
+          ) {
+            if (
+              this.datos_clientes[i].referencia
+                .toLowerCase()
+                .indexOf(filtro.referencia.toLowerCase()) >= 0
+            ) {
+              if (
+                this.datos_clientes[i].tipo
+                  .toLowerCase()
+                  .indexOf(filtro.tipos.toLowerCase()) >= 0
+              ) {
+                if (this.comprobarestado(this.datos_clientes[i].estado,filtro)) {
+                  this.datos_muestra.push(this.datos_clientes[i]);
+                  
+                }
+  
+              }
+            }
+          }
         }
+      }
+      console.log(this.datos_muestra);
     }
-
-
-    
+    comprobarestado(item: String,filtro:any) {
+      if (filtro.estado.pendiente) {
+        if (item.toLowerCase() == 'pendiente') {
+          return true;
+        }
+      }
+      if (filtro.estado.recogiendo) {
+        if (item.toLowerCase() == 'recogiendo') {
+          return true;
+        }
+      }
+      if (filtro.estado.recogida) {
+        if (item.toLowerCase() == 'recogida') {
+          return true;
+        }
+      }
+      if (filtro.estado.desconsolidando) {
+        if (item.toLowerCase() == 'desconsolidando') {
+          return true;
+        }
+      }
+      if (filtro.estado.desconsolidada) {
+        if (item.toLowerCase() == 'desconsolidada') {
+          return true;
+        }
+      }
+      if (filtro.estado.entregada) {
+        if (item.toLowerCase() == 'entregada') {
+          return true;
+        }
+      }
+      if (filtro.estado.incidencia) {
+        if (item.toLowerCase() == 'incidencia') {
+          return true;
+        }
+      }
+      if (
+        filtro.estado.pendiente == false &&
+        filtro.estado.recogiendo == false &&
+        filtro.estado.recogida == false &&
+        filtro.estado.desconsolidando == false &&
+        filtro.estado.desconsolidada == false &&
+        filtro.estado.entregada == false &&
+        filtro.estado.incidencia == false
+      ) {
+        return true;
+      }
+      return false;
+    }
 
 }

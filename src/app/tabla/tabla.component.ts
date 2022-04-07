@@ -9,10 +9,7 @@ import { datosService } from '../services/datos.service';
   styleUrls: ['./tabla.component.scss'],
 })
 export class TablaComponent implements OnInit {
-
-  @Input() datos_clientes_tabla: Tarea[]=[];
   constructor(public datosSrv:datosService){}
-  array_filtrado: any[] = [];
   page: number = 1;
   startItem:any = 0;
   endItem:any=28;

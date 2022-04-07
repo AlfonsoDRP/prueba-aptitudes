@@ -13,12 +13,12 @@
         <th class="alias">CLIENTE</th>
       </tr>
 
-      <tr *ngFor="let item of datosSrv.datos_clientes | slice: startItem:endItem ; index as posicion" class="contenido-tabla">
-        <td class="imagen"><img src="{{ datosSrv.datos_clientes[posicion].logo}}" class="img-logo" /></td>
+      <tr *ngFor="let item of datosSrv.datos_muestra | slice: startItem:endItem ; index as posicion" class="contenido-tabla">
+        <td class="imagen"><img src="{{ datosSrv.datos_muestra[posicion].logo}}" class="img-logo" /></td>
 
-        <td class="referencia">{{ datosSrv.datos_clientes[posicion].referencia}}</td>
+        <td class="referencia">{{ datosSrv.datos_muestra[posicion].referencia}}</td>
 
-        <td class="info" *ngIf="datosSrv.datos_clientes[posicion].observacion === ''; else contenido">
+        <td class="info" *ngIf="datosSrv.datos_muestra[posicion].observacion === ''; else contenido">
           <img src="../../assets/informacion.png" class="info" />
         </td>
 
@@ -27,54 +27,54 @@
             <img
               class="info"
               src="../../assets/informacion_amarillo.png"
-              popover="{{ datosSrv.datos_clientes[posicion].observacion }}"
+              popover="{{ datosSrv.datos_muestra[posicion].observacion }}"
               triggers="mouseenter:mouseleave"
               placement="left"
             /></td
         ></ng-template>
 
-        <td class="cantidad">x{{ datosSrv.datos_clientes[posicion].cantidad }}</td>
+        <td class="cantidad">x{{ datosSrv.datos_muestra[posicion].cantidad }}</td>
 
-        <td *ngIf="datosSrv.datos_clientes[posicion].estado === 'Pendiente'; else distinto">
-          <label class="pendiente">{{ datosSrv.datos_clientes[posicion].estado }}</label>
+        <td *ngIf="datosSrv.datos_muestra[posicion].estado === 'Pendiente'; else distinto">
+          <label class="pendiente">{{ datosSrv.datos_muestra[posicion].estado }}</label>
         </td>
 
         <ng-template #distinto
           ><td>
             <label
               class="desconsolidada"
-              *ngIf="datosSrv.datos_clientes[posicion].estado === 'Desconsolidada'; else entregada"
-              >{{ datosSrv.datos_clientes[posicion].estado }}</label
+              *ngIf="datosSrv.datos_muestra[posicion].estado === 'Desconsolidada'; else entregada"
+              >{{ datosSrv.datos_muestra[posicion].estado }}</label
             >
           </td></ng-template
         >
 
         <ng-template #entregada>
-          <label class="entregada">{{ datosSrv.datos_clientes[posicion].estado }}</label>
+          <label class="entregada">{{ datosSrv.datos_muestra[posicion].estado }}</label>
         </ng-template>
 
         <td class="fecha">
-          <strong>{{ extraerhora(datosSrv.datos_clientes[posicion].fecha) }}</strong>
+          <strong>{{ extraerhora(datosSrv.datos_muestra[posicion].fecha) }}</strong>
           {{ item.extraerfecha() }}
         </td>
 
-        <td class="tipo" *ngIf="datosSrv.datos_clientes[posicion].tipo === 'Mesa'; else ruta">
+        <td class="tipo" *ngIf="datosSrv.datos_muestra[posicion].tipo === 'Mesa'; else ruta">
           <label for="" class="mesa">M</label>
         </td>
 
         <ng-template #ruta><label class="ruta">R</label></ng-template>
 
-        <td class="cod_cliente">{{datosSrv.datos_clientes[posicion].codigo_cliente}}</td>
+        <td class="cod_cliente">{{datosSrv.datos_muestra[posicion].codigo_cliente}}</td>
 
-        <td class="alias">{{datosSrv.datos_clientes[posicion].alias_cliente}}</td>
+        <td class="alias">{{datosSrv.datos_muestra[posicion].alias_cliente}}</td>
       </tr>
     </table>
   </div>
   <div class="abajo">
-    <p>Lineas: {{ datosSrv.datos_clientes.length }}</p>
+    <p>Lineas: {{ datosSrv.datos_muestra.length }}</p>
 
     <pagination
-      [totalItems]="datos_clientes_tabla.length"
+      [totalItems]="datosSrv.datos_muestra.length"
       (pageChanged)="pageChanged($event)"
       [itemsPerPage]="28"
       [boundaryLinks]="true"
