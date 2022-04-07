@@ -1,8 +1,9 @@
+<div class="contenedor_supremo">
 <div class="contenedor-inputs">
   <div class="input-group filtro">
     <label class="label">Cliente</label
     ><input
-      [(ngModel)]="filtro.cliente"
+      [(ngModel)]="datosSrv.filtro.cliente"
       type="text"
       placeholder="Cliente"
       class="form-control"
@@ -21,7 +22,7 @@
   <div class="input-group input">
     <label class="label">Usuario</label
     ><input
-      [(ngModel)]="filtro.usuario"
+      [(ngModel)]="datosSrv.filtro.usuario"
       type="text"
       placeholder="usuario"
       class="form-control"
@@ -34,7 +35,7 @@
   <div class="input-group input">
     <label class="label">Referencia</label
     ><input
-      [(ngModel)]="filtro.referencia"
+      [(ngModel)]="datosSrv.filtro.referencia"
       type="text"
       placeholder="referencia"
       class="form-control"
@@ -47,7 +48,7 @@
   <div class="input-group input">
     <label class="label">Fecha</label
     ><input
-    [(ngModel)]="filtro.fecha"
+    [(ngModel)]="datosSrv.filtro.fecha"
       type="text"
       placeholder="Daterangepicker"
       class="form-control"
@@ -63,7 +64,7 @@
   <div class="input-group input">
     <label class="label">Tipos</label
     ><input
-      [(ngModel)]="filtro.tipos"
+      [(ngModel)]="datosSrv.filtro.tipos"
       type="text"
       placeholder="tipos..."
       class="form-control"
@@ -80,7 +81,7 @@
       <div class="contenedor-para-grid-de-checks">
         <div>
           <input
-          [(ngModel)]="filtro.estado.pendiente"
+          [(ngModel)]="datosSrv.filtro.estado.pendiente"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -91,7 +92,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.recogiendo"
+          [(ngModel)]="datosSrv.filtro.estado.recogiendo"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -102,7 +103,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.recogida"
+          [(ngModel)]="datosSrv.filtro.estado.recogida"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -113,7 +114,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.desconsolidando"
+          [(ngModel)]="datosSrv.filtro.estado.desconsolidando"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -124,7 +125,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.desconsolidada"
+          [(ngModel)]="datosSrv.filtro.estado.desconsolidada"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -135,7 +136,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.entregada"
+          [(ngModel)]="datosSrv.filtro.estado.entregada"
             class="form-check-input "
             type="checkbox"
             name="flexRadioDefault"
@@ -146,7 +147,7 @@
         </div>
         <div>
           <input
-          [(ngModel)]="filtro.estado.incidencia"
+          [(ngModel)]="datosSrv.filtro.estado.incidencia"
             class="form-check-input"
             type="checkbox"
             name="flexRadioDefault"
@@ -164,8 +165,10 @@
     </div>
   </div>
 </div>
+</div>
   <div class="contenedor-boton">
     <button class="btn-buscar btn btn-primary" (click)="buscar()">🔍Buscar</button>
   </div>
+
 </div>
 

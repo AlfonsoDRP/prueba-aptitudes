@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Tarea } from '../models/tarea/tarea.model';
+import { datosService } from '../services/datos.service';
 
 @Component({
   selector: 'app-filtros',
@@ -8,43 +9,27 @@ import { Tarea } from '../models/tarea/tarea.model';
 })
 export class FiltrosComponent implements OnInit {
   @Output() emisor_filtro = new EventEmitter();
-  filtro: any = {
-    cliente: '',
-    usuario: '',
-    referencia: '',
-    tipos: '',
-    fecha: [],
-    estado: {
-      'pendiente': false,
-      'recogiendo': false,
-      'recogida': false,
-      'desconsolidando': false,
-      'desconsolidada': false,
-      'entregada': false,
-      'incidencia': false,
-    }
-  };
-  constructor() {}
+  constructor(public datosSrv:datosService){};
   ngOnInit(): void {}
   buscar() {
     console.log('Emito que quiero filtrar');
-    console.log(this.filtro);
-    this.emisor_filtro.emit(this.filtro);
-    this.filtro = {
+    console.log(this.datosSrv.filtro);
+    this.emisor_filtro.emit();
+    this.datosSrv.filtro={
       cliente: '',
       usuario: '',
       referencia: '',
       tipos: '',
-      fecha: '',
+      fecha: [],
       estado: {
-        pendiente: false,
-        recogiendo: false,
-        recogida: false,
-        desconsolidando: false,
-        desconsolidada: false,
-        entregada: false,
-        incidencia: false,
-      },
-    };
+        'pendiente': false,
+        'recogiendo': false,
+        'recogida': false,
+        'desconsolidando': false,
+        'desconsolidada': false,
+        'entregada': false,
+        'incidencia': false,
+      }
+  }
   }
 }

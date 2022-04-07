@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Tarea } from '../models/tarea/tarea.model';
+import { datosService } from '../services/datos.service';
 
 @Component({
   selector: 'app-tabla',
@@ -10,6 +11,7 @@ import { Tarea } from '../models/tarea/tarea.model';
 export class TablaComponent implements OnInit {
 
   @Input() datos_clientes_tabla: Tarea[]=[];
+  constructor(public datosSrv:datosService){}
   array_filtrado: any[] = [];
   page: number = 1;
   startItem:any = 0;

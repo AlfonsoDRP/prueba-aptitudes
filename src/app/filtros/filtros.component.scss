@@ -1,5 +1,12 @@
+.contenedor_supremo{
+height: 100%;
+overflow-y: hidden;
+display: flex;
+flex-direction: column;
+}
 .contenedor-inputs {
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
   height: 100%;
   padding: 0.5rem;
@@ -8,8 +15,6 @@
 .label {
   width: 100%;
 }
-
-
 .estados-checks {
   margin: 0;
   background-color: white;
@@ -33,11 +38,8 @@
   }
 }
 .contenedor-boton {
-  height: 100%;
+  height: 60px;
   padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   .btn-buscar {
     width: 100%;
   }

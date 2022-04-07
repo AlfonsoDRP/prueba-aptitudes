@@ -25,40 +25,6 @@ export class Tarea {
     this.alias_cliente = json.alias_cliente ?? '';
   }
 
-  get_id(): string {
-    return this.id;
-  }
-  get_referencia(): string {
-    return this.referencia;
-  }
-  get_logo(): string {
-    return this.logo;
-  }
-  get_usuario(): string {
-    return this.usuario;
-  }
-  get_observacion(): string {
-    return this.observacion;
-  }
-  get_cantidad(): string {
-    return this.cantidad;
-  }
-  get_estado(): string {
-    return this.estado;
-  }
-  get_fecha(): string {
-    return this.fecha;
-  }
-  get_tipo(): string {
-    return this.tipo;
-  }
-  get_cod_cliente(): string {
-    return this.codigo_cliente;
-  }
-  get_alias_cliente(): string {
-    return this.alias_cliente;
-  }
-
   extraerfecha() {
     let fecha_extraida = this.fecha.substring(8, 10);
     let mes_numero = this.fecha.substring(5, 7);
@@ -104,3 +70,5 @@ export class Tarea {
     return fecha_extraida;
   }
 }
+
+

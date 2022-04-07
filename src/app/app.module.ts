@@ -12,6 +12,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { datosService } from './services/datos.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [PaginationConfig],
+  providers: [PaginationConfig,datosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
